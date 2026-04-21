@@ -78,6 +78,3 @@ def main(data_path: str, model_path: str) -> None:
     print(f"Test accuracy: {acc:.3f}")
 
     save_model(clf, model_path)
-    
-# This script can be run from the command line as follows:
-# python src/train.py --data data/sentiments.csv --out models/sentiment.job

@@ -13,5 +13,4 @@ conda activate sentiment-env
 pip install -r requirements.txt
 
 ## Train
-
-A new function was added.  src/train.py --data data/train.csv --out models/sentiment.joblib
+python src/train.py --data data/train.csv --out models/sentiment.joblib
