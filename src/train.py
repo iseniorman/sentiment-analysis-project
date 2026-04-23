@@ -64,7 +64,7 @@ def save_model(model: Pipeline, model_path: str) -> None:
     dump(model, model_path)
     print(f"Saved model to {model_path}")
     
-    
+    # Note: In a production setting, you might want to include versioning or timestamping in the model filename
 def main(data_path: str, model_path: str) -> None:
     """
     Main workflow to load, train, evaluate, and save the model.
@@ -78,3 +78,5 @@ def main(data_path: str, model_path: str) -> None:
     print(f"Test accuracy: {acc:.3f}")
 
     save_model(clf, model_path)
+    
+    
