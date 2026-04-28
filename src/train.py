@@ -1,11 +1,12 @@
 import argparse
+import os
+
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from joblib import dump
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline, make_pipeline
-import os
-from joblib import dump
 
 
 def load_and_validate_data(data_path: str) -> pd.DataFrame:

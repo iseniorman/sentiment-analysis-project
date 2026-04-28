@@ -1,8 +1,9 @@
 import argparse
 from typing import Any
+
 import numpy as np
-from numpy.typing import NDArray
 from joblib import load
+from numpy.typing import NDArray
 
 
 def load_model(model_path: str) -> Any:
