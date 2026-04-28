@@ -17,6 +17,7 @@ def load_and_validate_data(data_path: str) -> pd.DataFrame:
         raise ValueError("CSV must contain 'text' and 'label' columns")
     return df
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default="data/sentiments.csv")
@@ -24,6 +25,7 @@ if __name__ == "__main__":
 
     args: argparse.Namespace = parser.parse_args()
     main(data_path=args.data, model_path=args.out)
+
 
 def split_data(
     df: pd.DataFrame,
@@ -34,7 +36,11 @@ def split_data(
     try:
         # Stratified split is preferred
         X_train, X_test, y_train, y_test = train_test_split(
-            df["text"], df["label"], test_size=0.2, random_state=42, stratify=df["label"]
+            df["text"],
+            df["label"],
+            test_size=0.2,
+            random_state=42,
+            stratify=df["label"],
         )
     except ValueError:
         # Fallback if stratification fails (e.g., on very small datasets)
@@ -63,8 +69,8 @@ def save_model(model: Pipeline, model_path: str) -> None:
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
     dump(model, model_path)
     print(f"Saved model to {model_path}")
-    
-    
+
+
 def main(data_path: str, model_path: str) -> None:
     """
     Main workflow to load, train, evaluate, and save the model.
