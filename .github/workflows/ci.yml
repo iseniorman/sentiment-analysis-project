@@ -33,7 +33,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install nltk
+          echo "Installed packages:"
+          pip list
+          echo "Check nltk:"
+          python -c "import nltk; print('NLTK imported OK, version:', nltk.__version__)"
+
+
+      - name: Download NLTK data
+        run: |
+         python -c "import nltk; nltk.download('stopwords', quiet=True); nltk.download('wordnet', quiet=True)"
+
 
       - name: Run the formatter script
         run: |
           python src/formatter.py --input data/sentiments.csv --output data/cleaned_sentiments.csv
+
+      - name: Run predict script on sample text
+        run: |
+          python src/predict.py --model models/sentiment.joblib "I love this product!" "This is terrible"
